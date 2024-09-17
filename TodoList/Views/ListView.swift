@@ -16,6 +16,11 @@ struct ListView: View {
         List {
             ForEach(listViewModel.items) { item in
                ListRowView(item: item)
+                    .onTapGesture {
+                        withAnimation(.interactiveSpring) {
+                            listViewModel.updateItem(item: item)
+                        }
+                    }
                 
             }
             .onDelete(perform:  listViewModel.deleteItem)
